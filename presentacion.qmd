@@ -1,0 +1,322 @@
+---
+lang: es  
+---
+
+#Presentaciones en RMD
+
+RMD es la extensión de los archivos creados en `Rmarkdown` es una combinación de códigos de `R` y `Markdown` ([Revisa acá ¿Qué es markdown?](https://markdown.es/))
+
+## Presentaciones en RMarkdown
+
+Para crear una presentacion en RMarkdown, utilizando RStudio, se debe seleccionar un nuevo archivo tipo `RMarkdown`, luego el tipo de presentación que se quiere desarrollar, para este ejemplo seleccionamos **beamer**, luego se abrira una ventana con un codigo escrito similar al siguiente: 
+
+```{r}
+
+# ---
+# title: "Tu Título"
+# author: "Tu Nombre"
+# date: "Fecha"
+# output: beamer_presentation
+# ---
+# 
+# ## Diapositivas con viñeta
+# 
+# - Viñeta 1
+# - Viñeta 2
+# - Viñeta 3
+
+ 
+
+```
+
+## Funciones con kableExtra
+
+Para crear tablas en formato *LaTeX* o *HTML* con el paquete *kableExtra*, primero definimos los datos y luego aplicamos las funciones del paquete para formatear la tabla.
+
+```{r, warning=FALSE, message=FALSE}
+# Para instalar paquete "kableExtra" en caso de ser necesario
+
+paquetes <- c("kableExtra", "DT", "htmlwidgets")
+
+# Función para instalar y cargar paquetes
+install_carga <- function(paquetes) {
+  if (!require(paquetes, character.only = TRUE)) {
+    install.packages(paquetes)
+    library(paquetes, character.only = TRUE)
+  }
+}
+
+# Aplicar la función a cada paquete de la lista
+lapply(paquetes, install_carga)
+
+# Carga libreria
+library(kableExtra)
+
+# Definir datos
+dt <- mtcars[1:5, 1:6]
+
+# Crear una tabla con estilo en LaTeX
+kbl(dt, booktabs = TRUE) %>%
+  kable_styling(latex_options = "striped")
+
+
+```
+
+*Ejemplo de tabla con estilos*
+
+```{r, warning=FALSE, message=FALSE}
+# Definir los datos
+dt <- mtcars[1:5, 1:6]
+
+# Crear una tabla con múltiples estilos
+kbl(dt, booktabs = TRUE, 
+    caption = "Tabla de Ejemplo con Estilos") %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center",
+    font_size = 10
+  ) %>%
+  add_header_above(c(" ", "Grupo 1" = 3, "Grupo 2" = 3)) %>%
+  column_spec(1, bold = TRUE, color = "red",
+              background = "yellow") %>%
+  column_spec(2, width = "5em") %>%
+  row_spec(0, bold = TRUE, color = "white",
+           background = "#D7261E") %>%
+  row_spec(1:5, background = "#F7F7F7")
+
+```
+
+<br>
+<br>
+
+**Explicación de los Estilos**
+
+- booktabs: Utiliza el paquete booktabs para mejorar el diseño de la tabla.
+
+- bootstrap_options: Añade varias opciones de estilo como striped (filas alternas de color), hover (resaltar filas al pasar el mouse) y condensed (espaciado reducido).
+
+- full_width: Ajusta la tabla para que no ocupe todo el ancho disponible.
+
+- position: Define la posición de la tabla, en este caso centra la tabla en la página.
+
+- font_size: Cambia el tamaño de la fuente de la tabla.
+
+- add_header_above: Añade un encabezado adicional encima de la tabla para agrupar columnas.
+
+- column_spec: Especifica estilos para columnas individuales. En este caso, la primera columna es negrita, roja y con fondo amarillo, y la segunda columna tiene un ancho específico.
+
+- row_spec: Especifica estilos para filas individuales. La fila de encabezado (0) es negrita, blanca con fondo rojo oscuro, y las filas 1 a 5 tienen un fondo gris claro.
+ 
+ 
+## Tablas dinámicas en R
+
+
+Podemos crear una tabla dinámica utilizando una combinación de `DT::datatable` y el data.frame que queramos visualizar de manera interactiva. A continuación, se muestra un ejemplo utilizando el conjunto de datos 'mtcars'.
+
+```{r, warning=FALSE, message=FALSE}
+
+# Cargar los datos
+data("mtcars")
+
+# Crear una tabla dinámica
+DT::datatable(mtcars, 
+          options = list(pageLength = 5, 
+                         autoWidth = TRUE, 
+                         dom = 'Bfrtip', 
+                         buttons = c('copy', 
+                                     'csv', 'excel', 
+                                     'pdf', 'print')))
+
+```
+
+
+### Tabla dinámica con estilos
+
+```{r, warning=FALSE, message=FALSE}
+# Instalación y carga de paquetes
+#install.packages("DT")
+library(DT)
+
+# Cargar los datos
+data("mtcars")
+
+# Crear una tabla dinámica con personalización adicional
+datatable(mtcars, 
+          options = list(
+            pageLength = 5,  # Número de filas por página
+            autoWidth = TRUE,  # Ajuste automático del ancho de las columnas
+            dom = 'Bfrtip',  # botones, filtro y paginación
+            buttons = c('copy', 'csv',
+                        'excel', 'pdf',
+                        'print'), # Botones de exportación
+            initComplete = JS(
+              "function(settings, json) {",
+              "$(this.api().table().header()).css({'background-color':
+              'skyblue', 'color': 'black'});",
+              "}"
+            ),
+            className = 'cell-border stripe'  # Clases CSS para las celdas
+          ),
+          class = 'cell-border stripe') %>%
+  formatStyle(
+    'mpg',  # Columna a estilizar
+    backgroundColor = styleInterval(c(20, 30), 
+                                    c('yellow', 'orange',
+                                      'skyblue'))
+  )
+```
+
+
+
+### Cambio idioma de la tabla
+
+```{r}
+library(DT)
+library(htmlwidgets)
+
+# Cargar los datos
+data("mtcars")
+
+# Crear una tabla dinámica con opciones de 
+# estilo personalizadas y configuraciones en español
+datatable(mtcars, 
+          extensions = 'Buttons',  # Botones de exportación disponibles
+          options = list(
+            pageLength = 5,  # Número de filas por página
+            autoWidth = TRUE,  # Ajuste automático del ancho de las columnas
+            dom = 'Bfrtip',  # Botones, filtro y paginación
+            buttons = list('copy', 'csv', 'excel',
+                           'pdf', 'print'),  # Opciones de exportación
+            language = list(
+              url = 
+                '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'  
+            ), # Agregar un archivo json de configuración del idioma
+            initComplete = JS(
+              "function(settings, json) {",
+              "$(this.api().table().header()).css({'background-color': 
+              '#D7261E', 'color': 'black'});",
+              "}"
+            )
+          ),
+          class = 'cell-border stripe') %>%
+  formatStyle(
+    'mpg',  # Columna a estilizar
+    backgroundColor = styleInterval(c(20, 30), c('yellow', 
+                                                 'orange', 'red'))
+  ) %>%
+  htmlwidgets::onRender("
+    function(el, x) {
+      $(el).find('.dt-buttons').appendTo(
+      $(el).closest('.dataTables_wrapper').find('.col-md-6:eq(0)') );
+    }
+  ")
+```
+
+### Agregar titulo a la tabla 
+
+```{r}
+
+# Cargar los datos
+data("mtcars")
+
+# Crear un contenedor para la tabla y la referencia
+htmltools::div(
+  datatable(mtcars, 
+            extensions = 'Buttons',  # Botones de exportación disponibles
+          options = list(
+            pageLength = 5,  # Número de filas por página
+            autoWidth = TRUE,  # Ajuste automático del ancho de las columnas
+            dom = 'Bfrtip',  # Botones, filtro y paginación
+            buttons = list('copy', 'csv', 'excel',
+                           'pdf', 'print'),  # Opciones de exportación
+            language = list(
+              url = 
+                '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'  
+            ), # Agregar un archivo json de configuración del idioma
+              initComplete = JS(
+                "function(settings, json) {",
+                "$(this.api().table().header()).css({'background-color':
+                '#D7261E', 'color': '#fff'});",
+                "}"
+              )
+            ),
+            class = 'cell-border stripe', 
+            caption = htmltools::tags$caption(
+              style = 'caption-side: top; 
+              text-align: center; font-weight: bold;',
+              'Título de la Tabla: Comparación de Características de Vehículos'
+            )
+            ) %>%
+    formatStyle(
+      'mpg',  # Columna a estilizar
+      backgroundColor = styleInterval(c(20, 30), c('yellow', 'orange', 'red'))
+    ) %>%
+    htmlwidgets::onRender("
+      function(el, x) {
+        $(el).find('.dt-buttons').appendTo( $(el).closest(
+        '.dataTables_wrapper').find('.col-md-6:eq(0)') );
+      }
+    "),
+  htmltools::tags$p(
+    style = 'text-align: center; font-style: italic;',
+    'Fuente: mtcars dataset'
+  )
+)
+
+```
+
+### Referencias y filtros en la tabla
+
+```{r}
+
+# Cargar los datos
+data("mtcars")
+
+# Crear un contenedor para la tabla y la referencia
+htmltools::div(
+  datatable(mtcars, 
+            extensions = 'Buttons',  # Botones de exportación disponibles
+          options = list(
+            pageLength = 5,  # Número de filas por página
+            autoWidth = TRUE,  # Ajuste automático del ancho de las columnas
+            dom = 'Bfrtip',  # Botones, filtro y paginación
+            buttons = list('copy', 'csv', 'excel',
+                           'pdf', 'print'),  # Opciones de exportación
+            language = list(
+              url = 
+                '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'  
+            ), # Agregar un archivo json de configuración del idioma
+              initComplete = JS(
+                "function(settings, json) {",
+                "$(this.api().table().header()).css({
+                'background-color': 'skyblue', 'color': 'black'});",
+                "}"
+              )
+            ),
+            filter = "top",  # Filtros en la parte superior de la tabla
+            class = 'cell-border stripe', 
+            caption = htmltools::tags$caption(
+              style = 'caption-side: top; text-align:
+              center; font-weight: bold;',
+              'Título de la Tabla: Comparación de Características de Vehículos'
+            )
+            ) %>%
+    formatStyle(
+      'mpg',  # Columna a estilizar
+      backgroundColor = styleInterval(c(20, 30), c('yellow', 'orange', 'red'))
+    ) %>%
+    htmlwidgets::onRender("
+      function(el, x) {
+        $(el).find('.dt-buttons').appendTo( $(el).closest(
+        '.dataTables_wrapper').find('.col-md-6:eq(0)') );
+      }
+    "),
+  htmltools::tags$p(
+    style = 'text-align: center; font-style: italic;',
+    'Fuente: mtcars dataset'
+  )
+)
+
+```
+ 

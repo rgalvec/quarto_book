@@ -1,0 +1,38 @@
+project:
+  type: book
+  #output-dir: _book
+  output-dir: docs
+  
+book:
+  language: es
+  title: "PrimerosPasosEnR"
+  author: "Escuela de datos - Fundación SOL"
+  date: "12-10-2024"
+  date-format: "dddd, D MMM , YYYY"
+  chapters:
+    - index.qmd
+    - comenzar.qmd
+    - primerospasos.qmd
+    - historia.qmd
+    - rbase.qmd
+    - presentacion.qmd
+    - referencias.qmd
+    
+  downloads: [pdf]
+  sharing: [twitter, facebook]
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: 
+      light: flatly 
+      dark: darkly
+    fontsize: 1.4em
+    inestretch: 1.8
+  pdf:
+    documentclass: scrreprt
+
+prefer-html: true
+    
+editor: source

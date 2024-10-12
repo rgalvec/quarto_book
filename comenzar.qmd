@@ -1,0 +1,36 @@
+---
+lang: es  
+---
+
+# Para comenzar
+
+## Instalar R
+
+Si nunca has instalado un programa de computadora en tu vida, quizás sea recomendable que pidas apoyo para la instalación. Si has instalado un programa antes, hacerlo con R no debería ser más complejo. 
+
+Un fuente "oficial" para descargar `R` es CRAN (del inglés Comprehensive R Archive Network) algo así como el gran repositorio de R. Puedes acceder haciendo clik acá: [CRAN](https://cran.r-project.org/). 
+
+En ese sitio puedes descargar R, para Linux, Windows o Mac. Luego puedes trabajar con tu IDE favorito. No sabes qué es un IDE, para más referencias puede visitar la clase abierta [la clase abierta](https://ragc.quarto.pub/intror_r_edd/) de nuestra Escuela de Datos. 
+
+# Un IDE
+
+En pocas palabras el IDE es donde escribes el codigo y trabajar la mayor parte del tiempo. Su aspecto positivo es que permite visualizar resultados y realizar tareas utilizando botones y una interfaz integradas, por lo que puede ser útil cuando estás comenzando. 
+
+Uno de los IDE más populares de R, es RStudio. El IDE es un programa, por lo que también lo debes descargar e instalar. Puedes hacerlo acá: [POSIT - RSTUDIO](https://posit.co/downloads/). Posit es la empresa que creó RStudio. 
+
+También puede usar otros IDE's, o escribir en tu consola o en un libro de notas, el objetivo es que utilices lo que te sea más cómodo para trabajar. 
+
+
+# Conocer sobre las versiones
+
+Tanto R como RStudio, tienen versiones. Una versión es generalmente asociada a un número. dependiendo de la cantidad de cambios significativos para funcionar que tenga el programa en el tiempo, es probable que tenga muchas o pocas versiones. 
+
+Recordemos que R es parte de lo que podemos llamar *software libre* o *código abierto* es decir, puedes descargar el código desde CRAN y modificarlo. Eso ha sido positivo para que muchas personas puedan crear sus propios avances o programas con R. 
+
+Puede que tu interés no vaya a esos aspectos de R, de todas formas, saber la versión de tu programa es importante. Si instalaste R hace años y luego no lo seguiste usando y ahora lo quieres usar para seguir estos primeros pasos, puedes tomar en cuenta el código: 
+
+```{r}
+version 
+```
+
+Soló con que escribas `version` en la consola y presiones `enter`, podrás tener información de la versión. Debes fijarte en `version.string` y podrás saber la versión.  

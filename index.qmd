@@ -1,0 +1,28 @@
+---
+lang: es
+--- 
+
+# Inicio {.unnumbered}
+
+
+## Una breve guía  
+
+Este documento te permitirá dar los primeros pasos en R. La idea es que puedas comprender los aspectos generales de la historia, estructura de datos y objetos básicos en R. 
+
+La guía tiene seis capítulos orientados a conocer aquellos códigos que te servirán para *soltar la mano* y no perder la confianza en lo útil que puede llegar a ser aprender sobre pensamiento crítico, programación y datos. 
+El primer capítulo se llama **Para comenzar** está orientado a que tengas las referencias si es que no has instalado el R en tu computador. También contiene orientaciones generales sobre conceptos como IDE y versión.
+
+El segundo capítulo llamado **Primeros pasos** busca entregar una panorámica general sobre los tipos de datos en R. Te ayudará a comprender que que diferencia hay entre un número y una letra. Está más enfocado a la programación básica en R. Cuando estamos comenzando puede ser un capitulo al que volvamos frecuentemente, mientras avanzamos en la práctica de `R`.
+
+El tercer capítulo **Historia** está pensado para que tengas una idea de los orígenes de R y algunos hitos importantes. 
+
+En el cuarto capítulo, **¿Qué es R Base?** se revisan conceptos generables de `R` algunos códigos de utilidad y la creación de funciones, algo muy importante en el uso de R.
+
+Para comenzar a entrenar, en el quinto capítulo **Presentaciones con RMD** se proponen algunas utilidades para implementar el codigo y darle estilos a los trabajos escritos o presentaciones. 
+
+**El capitulo siguiente (sexto capítulo) siempre está en construcción y pronto será publicado**
+
+Las referencias te permitirán conocer algunos sitios recomendables para tu autoaprendizaje. 
+
+
+

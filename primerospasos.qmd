@@ -1,0 +1,270 @@
+---
+lang: es  
+---
+
+#Primeros pasos
+
+
+## Tipos de datos
+
+En R, hay varios tipos de datos básicos que puedes usar. Aquí hay una descripción de los tipos de datos más comunes.
+
+## Números
+
+Los números pueden ser enteros o números decimales.
+
+```{r}
+# Número entero
+x <- 5
+print(x)
+
+# Número decimal
+y <- 5.5
+print(y)
+
+```
+
+## Cadena de texto
+
+Las cadenas de texto se representan usando comillas simples o dobles.
+
+```{r}
+texto <- "Hola, mundo!"
+
+
+print(texto)
+```
+
+## Valores lógicos
+
+Los valores lógicos (booleanos) pueden ser TRUE o FALSE. Los valores lógicos se usan comúnmente para realizar operaciones condicionales.
+
+```{r}
+# Valores lógicos
+verdadero <- TRUE
+falso <- FALSE
+print(verdadero)
+print(falso)
+
+```
+
+## Vectores
+
+Un vector es una secuencia de datos del mismo tipo. Puedes crear vectores usando la función c().
+
+```{r}
+# Vector numérico
+numeros <- c(1, 2, 3, 4, 5)
+print(numeros)
+
+# Vector de caracteres
+cadenas <- c("uno", "dos", "tres")
+print(cadenas)
+
+# Vector lógico
+logicos <- c(TRUE, FALSE, TRUE)
+print(logicos)
+
+# Nuevo vector
+# ¿Qué ocurre si en un mismo vector dejamos character y numeric?
+combinado <- c(1,2,3,"cuatro", "cinco")
+
+# El resultado es un vector de "character". 
+combinado
+
+# Confirmamos la clase del vector con la función `class()`
+class(combinado)
+
+
+# A lo anterior se le ha llamado, "coerción"    
+
+```
+
+## Coerción
+
+En R, la coerción de vectores se refiere al proceso de conversión automática de los elementos de un vector a un tipo de datos común cuando los elementos originales son de tipos diferentes. Esto se hace para asegurar que todas las operaciones en los vectores se realicen de manera consistente y sin errores. R sigue una jerarquía específica de tipos de datos para realizar esta conversión.
+
+Jerarquía de Coerción R tiene una jerarquía de tipos de datos que determina cómo se realiza la coerción. La jerarquía de coerción en R es la siguiente (de menor a mayor):
+
+1.  Logical (Lógico): TRUE, FALSE
+2.  Integer (Entero): Números enteros
+3.  Numeric (Numérico o Double): Números reales
+4.  Complex (Complejo): Números complejos
+5.  Character (Carácter): Cadenas de texto
+6.  List (Lista): Colecciones de elementos
+
+Cuando se combinan elementos de diferentes tipos en un vector, R los convierte automáticamente al tipo de datos "más alto" en la jerarquía.
+
+\*\* lógico -\> entero -\> numérico -\> cadena de texto (logical -\> integer -\> numeric -\> character) \*\*
+
+### 1. Coerción de Logical a Integer
+
+```{r}
+vec <- c(TRUE, FALSE, 1)
+print(vec)  # Output: 1 0 1
+
+```
+
+En este ejemplo, TRUE se convierte a 1 y FALSE se convierte a 0.
+
+### 2. Coerción de Integer a Numeric
+
+```{r}
+vec <- c(1L, 2.5)
+print(vec)  # Output: 1.0 2.5
+```
+
+El número entero 1L se convierte a 1.0 para coincidir con el número numérico 2.5.
+
+### 3. Coerción de Numeric a Character
+
+```{r}
+vec <- c(1.5, "a")
+print(vec)  # Output: "1.5" "a"
+```
+
+El número 1.5 se convierte a la cadena de texto "1.5".
+
+### 4. Coerción de diferentes tipos en una lista
+
+```{r}
+vec <- list(1, "a", TRUE)
+print(vec)  # Output: [[1]] 1 [[2]] "a" [[3]] TRUE
+
+```
+
+En una lista, los elementos no se fuerzan a un tipo común; cada elemento puede mantener su tipo de datos original.
+
+## Coerción Explícita
+
+Además de la coerción automática, R también permite realizar coerciones explícitas usando funciones específicas como as.numeric(), as.character(), as.integer(), etc.
+
+**Ejemplo de Coerción Explícita**
+
+```{r}
+vec <- c("1", "2", "3")
+numeric_vec <- as.numeric(vec)
+print(numeric_vec)  # Output: 1 2 3
+
+```
+
+Aquí, *as.numeric(vec)* convierte explícitamente el vector de caracteres *vec* en un vector numérico.
+
+**Notas Importantes**
+
+*NA (Not Available)*: Durante la coerción, si algún elemento no puede convertirse correctamente, R genera un valor NA y generalmente emite una advertencia.
+
+*Factores*: Cuando se trabaja con factores, coercionarlos a otros tipos puede requerir pasos adicionales, como primero convertir el factor a carácter antes de convertirlo a numérico.
+
+**Ejemplo**
+
+```{r}
+factor_vec <- factor(c("1", "2", "3"))
+char_vec <- as.character(factor_vec)
+numeric_vec <- as.numeric(char_vec)
+print(numeric_vec)  # Output: 1 2 3
+
+```
+
+## Manipular vectores
+
+Puedes manipular vectores de varias maneras, incluyendo seleccionar elementos, sumar y restar elementos, y más.
+
+```{r}
+# Selección del primer elemento
+primer_elemento <- numeros[1]
+print(primer_elemento)
+
+# Selección de múltiples elementos
+primeros_tres <- numeros[1:3]
+print(primeros_tres)
+
+```
+
+### Suma de vectores
+
+```{r}
+# Suma de vectores
+suma <- numeros + c(1, 1, 1, 1, 1)
+print(suma)
+
+# Producto de vectores
+producto <- numeros * c(2, 2, 2, 2, 2)
+print(producto)
+```
+
+### Filtrar vectores
+
+```{r}
+# Filtrar valores mayores que 2
+mayores_que_dos <- numeros[numeros > 2]
+print(mayores_que_dos)
+
+# Filtrar valores iguales a TRUE
+verdaderos <- logicos[logicos == TRUE]
+print(verdaderos)
+```
+
+## Lista
+
+En R, una lista es una estructura de datos versátil que puede contener elementos de diferentes tipos, por ejemplo, vectores, matrices, data frames, e incluso otras listas. Esto la vuelve óptima para organizar y manipular datos heterogéneos.
+
+**Concepto de list()**
+
+Una lista en R se crea utilizando la función list(). A diferencia de los vectores, que deben contener elementos del mismo tipo, las listas pueden contener elementos de diferentes tipos. Cada elemento de una lista puede ser referenciado mediante índices o nombres.
+
+Ejemplo de Creación de una Lista
+
+```{r}
+lista1 <- list(
+  numero = 1,
+  nombre = "Juan",
+  vector = c(1, 2, 3),
+  matriz = matrix(1:4, nrow = 2),
+  lista_anidada = list(a = 10, b = 20)
+)
+
+
+print(lista1)
+
+```
+
+Acceso a Elementos de una Lista Puedes acceder a los elementos de una lista utilizando el operador de doble corchete \[\[ \]\] o el operador de signo de dólar \$.
+
+**Acceso por Índice**
+
+```{r}
+print(lista1[[1]])  # [1] 1
+print(lista1[[3]])  # [1] 1 2 3
+
+```
+
+**Acceso por nombre**
+
+```{r}
+print(lista1$nombre)  # [1] "Juan"
+print(lista1$vector)  # [1] 1 2 3
+
+```
+
+## data.frame
+
+Un data.frame en R es una estructura de datos fundamental y muy versátil que se utiliza para almacenar datos tabulares. Es similar a una tabla en una base de datos o una hoja de cálculo en Excel, donde cada columna puede contener un tipo diferente de datos (numéricos, caracteres, factores, etc.), pero todos los elementos de una columna deben ser del mismo tipo.
+
+**Concepto de data.frame**
+
+Un data.frame es esencialmente una lista de vectores de igual longitud, donde cada vector representa una columna de datos y cada elemento dentro del vector representa una fila. Los data.frames son utilizados ampliamente en R para la manipulación y análisis de datos.
+
+**Creación de un data.frame**
+
+Puedes crear un data.frame utilizando la función data.frame().
+
+```{r}
+# Crear un data frame simple
+df <- data.frame(
+  nombre = c("Ana", "Luis", "Marta", "Juan"),
+  edad = c(23, 35, 29, 40),
+  salario = c(50000, 60000, 70000, 80000)
+)
+print(df)
+```

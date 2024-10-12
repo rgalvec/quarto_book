@@ -1,0 +1,89 @@
+---
+lang: es  
+---
+
+# Referencias {.unnumbered}
+
+::: {#refs}
+:::
+
+A continuación podrás revisar fuentes útiles y referencias. 
+
+# Referencias principales para Aprender R
+
+Aquí tienes una lista de recursos esenciales para aprender R, desde libros y tutoriales en línea hasta cursos interactivos y canales de YouTube.
+
+## Libros
+
+1. **R for Data Science** por Hadley Wickham y Garrett Grolemund
+   - [Libro en línea gratuito](https://r4ds.had.co.nz/)
+Un recurso excelente para principiantes y usuarios intermedios que cubre conceptos de manipulación, visualización y modelado de datos con R.
+
+2. **Advanced R** por Hadley Wickham
+   - [Libro en línea gratuito](https://adv-r.hadley.nz/)
+Ideal para aquellos que ya tienen conocimientos básicos de R y desean profundizar en aspectos más avanzados del lenguaje.
+
+3. **El arte de programar en R** por Julio Santana y Efraín Mateos
+   - [Enlace en CRAN](https://cran.r-project.org/doc/contrib/Santana_El_arte_de_programar_en_R.pdf)
+Cubre una amplia gama de temas, desde los fundamentos hasta técnicas avanzadas de programación en R.
+
+## Tutoriales en Línea
+
+1. **Swirl - Learn R, in R**
+   - [Swirl](https://swirlstats.com/)
+Un paquete de R que ofrece cursos interactivos directamente en la consola de R.
+
+2. **Coursera: R Programming**
+   - [Curso en Coursera](https://www.coursera.org/learn/r-programming)
+Un curso ofrecido por la Universidad Johns Hopkins que es parte de la especialización en Ciencia de Datos.
+
+3. **Datacamp: Introduction to R**
+   - [Curso en Datacamp](https://www.datacamp.com/courses/free-introduction-to-r)
+Curso gratuito introductorio que cubre los conceptos básicos de R.
+
+## Canales de YouTube
+
+1. **Data School**
+   - [Data School](https://www.youtube.com/user/dataschool)
+Ofrece tutoriales detallados sobre R y técnicas de ciencia de datos.
+
+2. **R Programming for Data Science**
+   - [R Programming for Data Science](https://www.youtube.com/channel/UCyE2x8V9V_HphRfp6wttldg)
+Enfocado en la programación en R para ciencia de datos, con numerosos ejemplos prácticos.
+
+3. **StatQuest with Josh Starmer**
+   - [StatQuest](https://www.youtube.com/user/joshstarmer)
+Explicaciones claras y simples sobre estadísticas y R.
+
+## Documentación Oficial
+
+1. **The Comprehensive R Archive Network (CRAN)**
+   - [CRAN](https://cran.r-project.org/manuals.html)
+La fuente oficial de la documentación de R, incluyendo el manual del usuario y otros recursos útiles.
+
+2. **RStudio Documentation**
+   - [RStudio Documentation](https://docs.rstudio.com/)
+Documentación y guías sobre cómo usar RStudio, el IDE más popular para R.
+
+## Blogs y Comunidades
+
+1. **R-Bloggers**
+   - [R-Bloggers](https://www.r-bloggers.com/)
+Una agregación de blogs sobre R que cubren una amplia gama de temas, desde tutoriales hasta análisis avanzados.
+
+2. **Stack Overflow**
+   - [Stack Overflow](https://stackoverflow.com/questions/tagged/r)
+Una comunidad de preguntas y respuestas donde puedes encontrar soluciones a problemas comunes y preguntar sobre tus propios desafíos en R.
+
+ 
+## Recursos Adicionales
+
+1. **Cheat Sheets**
+   - [RStudio Cheat Sheets](https://rstudio.com/resources/cheatsheets/)
+   Hojas de referencia rápidas para diversos paquetes y funciones de R, proporcionadas por RStudio.
+
+2. **Tidyverse**
+   - [Tidyverse](https://www.tidyverse.org/)
+Una colección de paquetes de R diseñados para la ciencia de datos, que incluyen `ggplot2`, `dplyr`, `tidyr`, y más.
+
+ 

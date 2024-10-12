@@ -1,0 +1,337 @@
+---
+lang: es  
+---
+
+# ¿Qué es R Base?
+
+
+R base se refiere al conjunto fundamental de funciones y paquetes que se instalan con R. Este núcleo incluye funciones para manipulación básica de datos, operaciones aritméticas, funciones estadísticas básicas, y gráficos simples. R base proporciona las herramientas necesarias para comenzar con el análisis de datos, y su funcionalidad puede ser ampliada mediante la instalación de paquetes adicionales desde CRAN (Comprehensive R Archive Network).
+
+## Características de R Base
+
+Manipulación de Datos: Funciones para manejar estructuras de datos como vectores, matrices, listas y data frames.
+Estadísticas Básicas: Funciones para cálculos estadísticos como media, mediana, varianza, y desviación estándar.
+Gráficos: Herramientas para crear gráficos básicos como histogramas, diagramas de dispersión, y gráficos de líneas.
+Programación: Funciones de control de flujo, bucles, y la capacidad de definir funciones personalizadas.
+
+## Ejemplo R base
+```{r}
+# Crear un vector numérico
+numeros <- c(1, 2, 3, 4, 5)
+
+# Calcular la media del vector
+media_numeros <- mean(numeros)
+
+# Crear un gráfico de dispersión
+plot(numeros, main="Gráfico de Dispersión", xlab="Índice", ylab="Valor")
+```
+
+## Manipulaciones de tablas con R base
+
+```{r}
+# Crear un data.frame o tabla
+
+df <- data.frame(
+  nombre = c("Ana", "Luis", "Marta", "Juan"),
+  edad = c(23, 35, 29, 40),
+  salario = c(50000, 60000, 70000, 80000)
+)
+
+# Crear un data frame
+tabla1 <- data.frame(dia = c("Lunes", "Martes", "Miercoles", "Jueves"),
+           obs = c( 10, 11, "hola", 22))
+
+tabla1
+```
+
+Algo importante a tener en cuenta es que para construir un data.frame o tabla es necesario tener vectores de una longitud similar. Los vectores pueden tener distintos elementos como ´numeric´o ´character´ sin embargo, se aplicarán las reglas de coerción. 
+
+```{r}
+# Para ver una columna específica de una tabla podemos utilizar el operador ´$´
+
+class(tabla1$dia)
+class(tabla1$obs)
+
+# En este caso utilizamos un función de la familia ´as.´ para convertir el vector en numeric. Dado que el vector tiene numero y un palabra ´´hola´
+#esta palabra se convierte en NA pues no se puede transformar a numeric.
+class(as.numeric(tabla1$obs))
+
+# Convertir numerico obs
+tabla1$obs <- as.numeric(tabla1$obs)
+
+# Revisamos la clase de la columna del objeto.
+class(tabla1$obs)
+
+#Promedio 
+mean(tabla1$obs, na.rm = TRUE)
+```
+
+### Manipulación de tablas con paquete ´dplyr´
+
+```{r}
+# Cargamos la libreria ´dplyr´ y ´clipr´
+
+library(dplyr)
+library(clipr)
+
+# Operador ´pipe´ tiene uso en "Rbase" y en "tidyverse" con el paquete magrittr
+
+#rbase    # magrittr
+#  |>     # %>%
+
+# Creamos un nuevo objeto utilizando la pipe
+objeto1 <- tabla1 |> # acá asignamos un nuevo objeto "objeto1", desde "tabla1"
+dplyr::filter(!is.na(obs)) |>  # se realiza un filtro para quitar "NA" en col "obs"
+dplyr::summarise(# Se realiza resumen con medidas
+                promedio = mean(obs, na.rm = TRUE), # promedio
+                mediana = median(obs, na.rm = TRUE), # mediana
+                numero   = n()) |> #conteo
+dplyr::rename(Media = promedio) # se renombra la columna promedio como "Media"
+
+# También es posible utilizar pipe en rbase, pero solo la del estilo " |> "
+objeto1$Media |> class()
+
+# Con clipr se puede copiar el objeto rapidamente para pegar en excel y otro
+# clipr::write_clip(objeto1)
+
+# Con esta función se puede conocer el directorio de trabajo actual
+getwd()
+```
+
+
+## Guardar o exportar una tabla o data.frame
+
+Es posible guardar un objeto de R en diversos formatos. En el caso de que sean objetos como tablas de datos o bases de datos, que no se trabajarán otro lenguaje, puede ser recomendable almacenarlos en formato ´.rds´ que es el nativo de R y permite mejor velocidad de lectura y escritura, además menos tamaño en disco. 
+
+También es posible guardar los archivos en formato ´.csv´ u otros. Generalmente esto se puede hacer con las funciones ´write.´ o ´save´
+
+```{r}
+# Guardar RDS
+saveRDS(objeto1, "objeto1.rds")
+
+# Guardar objeto1 como un csv
+write.csv2(x = objeto1,  # corresponde al objeto a exportar 
+          file = "objeto1.csv", # define el nombre que tendrá el archivo exportado 
+          dec = ",", # define que para decimales se utilice ´,´
+          sep = ";", # define que el separador sea ´;´
+          row.names = FALSE)
+```
+
+#### Manipulación Rbase
+
+Para los siguientes ejercicios se utilizará el paquete ´cars´ que viene incorporado en R. 
+
+```{r}
+# Manipular datos
+class(cars$dist)
+
+# Filtro
+cars$speed[cars$speed > 10 & cars$dist > 20]
+
+# Crea nuevo objeto a partir de filtro
+cars2 <- cars[1:15, 1:2]
+
+# Los valores mayores a 10 de la columna speed se reemplazan con ´NA´
+cars2$speed[cars2$speed>10] <- NA
+
+# Para trabajar con esta sintaxis es importante considerar que
+# en el interior de los corchetes se sigue el orden [filas, columnas]
+# objeto[f,c]
+
+# El dato que está en la tercera fila, de la segunda columna
+cars[3,2]
+
+# Filtro de rango de los datos que están entre las filas 1 a la 4 y columnas 1 y 2
+cars[1:4, 1:2]
+
+# Usando vector
+cars[c(1,4), c(1,2)]
+
+
+
+# Para crear una tabla de contingencia se puede utilizar la función ´table()´
+table(cars2$speed)
+
+prop.table(table(iris$Species))
+
+table(iris$Species, iris$Petal.Length)
+
+```
+
+## Ciclo for
+
+Un bucle for en R permite ejecutar repetidamente un bloque de código un número específico de veces.
+
+### Estructura básica del bucle for
+
+La estructura básica del cilo `for` se describe de la siguiente forma: *for (variable in secuencia){ operaciones }*
+
+
+```{r}
+
+# for (variable in secuencia) {
+#       Código a ejecutar
+# }
+
+```
+
+- *Variable*: Es una variable que toma los valores de cada elemento en la secuencia.
+
+- *Secuencia*: Es un vector que contiene los valores que la variable tomará sucesivamente.
+
+- *Código a ejecutar*: Es el bloque de código que se ejecutará en cada iteración del bucle.
+
+
+*Ejemplo 1: Iteración en una secuencia*
+
+```{r}
+
+for (i in 1:5) {
+  print(i)
+}
+
+```
+
+En este caso, i tomará cada valor en la secuencia 1, 2, 3, 4, 5, y print(i) se ejecutará en cada iteración, imprimiendo cada número.
+
+*Ejemplo 2: Iteración en un vector*
+
+```{r}
+
+# Crea un vector numérico
+numeros <- c(2, 4, 6, 8, 10)
+# Realiza el bucle para imprimir los valores del vector
+for (num in numeros) {
+  print(num)
+}
+
+```
+
+
+*Ejemplo 3: Operaciones dentro del bucle*
+
+```{r}
+
+numeros <- c(1, 2, 3, 4, 5)
+for (num in numeros) {
+  cuadrado <- num^2 # Operación
+  print(paste("El cuadrado de", num, "es", cuadrado)) 
+}
+
+```
+
+*Ejemplo 4: Bucles anidados*
+
+```{r}
+
+for (i in 1:5) {
+  for (j in 1:5) {
+    resultado <- i * j
+    print(paste(i, "x", j, "=", resultado))
+  }
+}
+
+```
+
+En este caso, el bucle interno recorre los valores del 1 al 5 para cada valor del bucle externo, generando una tabla de multiplicar.
+
+
+## Sintaxis básica de una función en R
+
+Las funciones en R son fundamentales para estructurar el código y hacerlo reutilizable. Utilizar paquetes como *purrr* y *kableExtra* nos permite ampliar las capacidades de R para manejar listas y generar tablas con estilo, respectivamente. Al seguir una estructura clara y consistente, podemos desarrollar código R eficiente y fácil de mantener.
+
+Para definir una función en R, Se utiliza la palabra clave `function`. Aquí tienes la estructura básica:
+
+```{r}
+nombre_de_la_funcion <- function(argumento1, argumento2, ...) {
+  # Cuerpo de la función
+  # Código a ejecutar
+  resultado <- argumento1 + argumento2
+  return(resultado)
+}
+
+```
+
+*Ejemplo: Crear una función para sumar dos números*
+
+```{r}
+suma <- function(a, b) {
+  resultado <- a + b
+  return(resultado)
+}
+
+# Usar la función
+suma(3, 5) # Devuelve 8
+
+```
+
+### Funciones con valores predeterminados
+
+Se pueden establecer valores predeterminados para los argumentos de una función:
+
+```{r}
+suma <- function(a = 1, b = 1) {
+  resultado <- a + b
+  return(resultado)
+}
+
+# Usar la función con valores predeterminados
+suma() # Devuelve 2
+
+```
+
+### Funciones dentro de funciones
+
+En R, también se puede definir funciones dentro de otras funciones:
+
+```{r}
+
+operacion <- function(a, b) {
+  suma <- function(x, y) {
+    return(x + y)
+  }
+  producto <- function(x, y) {
+    return(x * y)
+  }
+  resultado_suma <- suma(a, b)
+  resultado_producto <- producto(a, b)
+  return(list(suma = resultado_suma, producto = resultado_producto))
+}
+
+# Usar la función
+operacion(3, 5) # Devuelve una lista con la suma y el producto
+
+
+```
+
+### Funciones anónimas
+
+Las funciones anónimas (también conocidas como funciones lambda) son útiles para operaciones rápidas y se utilizan a menudo con funciones de orden superior como apply, lapply, sapply, entre otras.
+
+```{r}
+# Usar una función anónima para elevar al cuadrado los elementos de un vector
+vector <- c(1, 2, 3, 4)
+resultado <- sapply(vector, function(x) x^2)
+print(resultado) # Devuelve c(1, 4, 9, 16)
+
+```
+
+
+### Ejemplo avanzado con purrr
+El paquete purrr de *tidyverse* proporciona una forma funcional de trabajar con listas y vectores. Aquí hay un ejemplo de cómo usar una función personalizada con *map*:
+
+
+```{r}
+library(purrr)
+
+# Definir una función para multiplicar por 2
+multiplicar_por_dos <- function(x) {
+  return(x * 2)
+}
+
+# Usar map para aplicar la función a cada elemento de una lista
+lista <- list(1, 2, 3, 4)
+resultado <- map(lista, multiplicar_por_dos)
+print(resultado) # Devuelve una lista con elementos multiplicados por 2
+
+```

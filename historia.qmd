@@ -1,0 +1,109 @@
+---
+lang: es  
+---
+
+# Historia
+
+## Un poco de historia de la programación
+
+La narrativa tradicional presenta la historia de la programación como una marcha triunfal hacia la eficiencia y la automatización. Sin embargo, esta visión ignora las complejas relaciones sociales, económicas y políticas que han moldeado este campo.
+
+La historia de la programación es una narrativa intrínsecamente ligada a las dinámicas sociales y económicas que han moldeado nuestro mundo contemporáneo. Desde sus inicios, la programación ha servido no solo como una herramienta técnica, sino también como un reflejo de las estructuras de poder y las relaciones de producción imperantes.
+
+Este contexto histórico ha dejado una huella profunda en la cultura de la programación. La búsqueda de la eficiencia y la optimización, a menudo a expensas de la legibilidad y la accesibilidad del código, refleja la lógica capitalista de maximizar la producción y minimizar los costos.
+
+Además, la programación ha estado tradicionalmente dominada por una élite técnica, en su mayoría hombres blancos de países desarrollados. Esta falta de diversidad ha perpetuado sesgos y desigualdades en el acceso y uso de la tecnología.
+
+En sus albores, la programación surgió en un contexto de industrialización y expansión capitalista, donde la eficiencia y la productividad eran imperativos. Los primeros lenguajes de programación, como Fortran y COBOL, fueron desarrollados para optimizar procesos industriales y administrativos, facilitando así la consolidación de grandes corporaciones y la centralización del control económico. Este enfoque técnico reflejaba una visión mecanicista de la sociedad, donde el ser humano se veía subordinado a las máquinas y a los imperativos del capital.
+
+
+La programación no es neutral. Las decisiones sobre qué problemas se abordan, cómo se diseñan las interfaces y quién tiene acceso a la tecnología reflejan las agendas de quienes la crean. En muchos casos, estas agendas están ligadas al poder, el control y el beneficio económico. La creciente influencia de las grandes empresas tecnológicas plantea preguntas sobre la privacidad, la manipulación y el impacto social de la programación.
+
+En este sentido, es crucial mantener una mirada crítica sobre el desarrollo y uso de R, y de cualquier lenguaje de programación. Debemos preguntarnos:**¿quién controla el acceso a estas herramientas? ¿Cómo se utilizan para generar y distribuir conocimiento? ¿Quiénes se benefician de su uso?**
+
+## Algunos puntos adicionales a considerar:
+
+- **El papel del colonialismo:** La historia de la programación está entrelazada con la expansión colonial. La necesidad de administrar y controlar vastos territorios impulsó el desarrollo de tecnologías de la información, como el telégrafo y las máquinas tabuladoras.
+
+- **La brecha digital:** A pesar de los avances tecnológicos, el acceso a la programación y a las herramientas digitales sigue siendo desigual. La brecha digital perpetúa la exclusión y limita las oportunidades para las comunidades marginadas.
+
+- **El impacto ambiental:** La producción de hardware y el consumo energético de las computadoras tienen un impacto significativo en el medio ambiente. Una mirada crítica debe considerar la sostenibilidad de la industria tecnológica.
+
+
+# Un poco de historia de R (o R en la historia)
+
+El lenguaje `R`, creado en la década de 1990 por Ross Ihaka y Robert Gentleman, emerge en un contexto diferente, marcado por la globalización y la revolución informática. `R` fue diseñado como una herramienta para el análisis estadístico y la visualización de datos, promoviendo una **democratización del conocimiento técnico**. Sin embargo, desde una perspectiva crítica (o marxista), es crucial cuestionar quién controla y se beneficia de estas herramientas. Aunque `R` es de código abierto y accesible, su adopción está en gran medida mediada por instituciones académicas y corporativas que **dominan la producción de conocimiento y, por ende, perpetúan ciertas relaciones de poder**.
+
+Además, el auge de lenguajes de programación como `R` puede interpretarse como parte de una lógica capitalista que busca constantemente innovar y optimizar, pero que también puede conducir a una precarización laboral en sectores tecnológicos. La constante demanda de nuevos conocimientos y habilidades en programación refleja una dinámica de explotación donde quien trabaja debe **adaptarse continuamente** para mantenerse 'relevante' en el *mercado laboral*.
+
+Si bien `R` es un lenguaje de código abierto, su uso se ha visto influenciado por la creciente mercantilización del conocimiento y la proliferación de software propietario en el ámbito del análisis de datos. Las grandes empresas tecnológicas han invertido en el desarrollo de herramientas y plataformas comerciales que, si bien se basan en R, buscan capturar y controlar el flujo de datos y análisis. La proliferación de datos masivos (Big Data) y  la  inteligencia artificial plantean nuevas formas de  explotación  y  vigilancia,  que  deben  ser  analizadas  desde  una  perspectiva  crítica.
+
+La estandarización de ciertos lenguajes, la propiedad intelectual y las licencias de software son aspectos que revelan cómo el poder se configura y se mantiene en el ámbito tecnológico. En este sentido, la historia de la programación es una ventana para comprender las intersecciones entre tecnología, economía y sociedad, y para cuestionar las estructuras que determinan quién tiene acceso y control sobre las herramientas que moldean nuestro mundo.
+
+La  división del trabajo intelectual y manual, característica del capitalismo, se replica en el ámbito de la programación.  Los "arquitectos" del software, en su mayoría provenientes de élites académicas, diseñan sistemas que luego son implementados por programadores, quienes a menudo enfrentan **condiciones laborales precarias y alienantes**. Esta división jerárquica perpetúa la desigualdad y limita la participación democrática en la creación tecnológica.
+
+En síntesis el enfoque que proponemos considera crucial  desmitificar  la  idea  de  que  la  tecnología  es  neutral  o  inherentemente  beneficiosa.  **La  programación,  como  herramienta,  puede  ser  utilizada  para  fines  emancipatorios  o  para  reforzar  las  estructuras  de  opresión**.   
+
+### Les invitamos a reflexionar sobre las siguientes preguntas:
+
+- ¿Cómo podemos construir una tecnología que esté al servicio de la clase trabajadora y no de la acumulación incesante de capital?
+
+- ¿Cuál es el objetivo de aprender programación en un contexto donde la Inteligencia Artificial puede resolver problemas básicos de forma eficiente?
+
+
+<div class="card text-white bg-primary mb-3" style="max-width: 40rem;">
+  <div class="card-header">Recordemos las palabras de Marx:</div>
+  <div class="card-body">
+   **"Los filósofos no han hecho más que interpretar de diversos modos el mundo, pero de lo que se trata es de transformarlo".** </p>
+  </div>
+</div>
+
+ 
+
+## Orígenes de R
+
+`R` es un lenguaje y entorno de programación para análisis estadístico y gráficos. Surgió a principios de la década de 1990 como una implementación del lenguaje S, que fue desarrollado en los Laboratorios Bell por John Chambers y sus colegas. Como ya se dijo, `R` fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, y fue lanzado como software libre bajo la licencia GNU General Public License en 1995.
+
+### Principales Hitos
+
+- 1995: Primera versión pública de `R`.
+
+- 2000: Se lanza la versión 1.0.0 de `R`, marcando su madurez - como herramienta de análisis estadístico.
+
+- 2004: `R` se convierte en el lenguaje más utilizado en el Proyecto de Análisis Estadístico de Google.
+
+- 2010: Revolution Analytics (ahora parte de Microsoft) comienza a ofrecer soporte comercial para `R`.
+
+- 2015: Microsoft adquiere Revolution Analytics, impulsando el uso de `R` en el ámbito empresarial.
+
+- 2017: RStudio (el IDE más usado para `R`) lanza RStudio Server Pro, facilitando el uso de `R` en entornos de producción.
+
+- 2023: Rstudio (Antes así se llamaba la empresa y el IDE) cambia su nombre a POSIT y comienza a desarrollar RStudio con orientación al uso multilenguaje. 
+
+## Usabilidad
+
+`R` es conocido por su facilidad para el análisis estadístico y la visualización de datos. Su usabilidad se ve reforzada por una comunidad activa que contribuye con paquetes adicionales que extienden su funcionalidad. `R` es especialmente apreciado en la academia y en la industria por su capacidad de manejar grandes conjuntos de datos y por sus capacidades gráficas avanzadas.
+
+## Usos Más Populares
+
+**Análisis Estadístico:** R ofrece una amplia gama de técnicas estadísticas, incluyendo modelos lineales y no lineales, pruebas estadísticas clásicas, análisis de series temporales, clasificación y agrupamiento.
+
+**Visualización de Datos:** Paquetes como ggplot2 permiten crear visualizaciones de datos sofisticadas y personalizadas.
+
+**Ciencia de Datos**: `R` es ampliamente utilizado para el análisis de datos en la ciencia de datos, incluyendo minería de datos y machine learning.
+
+## Para profundizar..
+
+Si quieres conocer más sobre los enfoques críticos en cuanto a comunicación, tecnología, programación y lucha de clases, puedes revisar el trabajo de [Wendy Hui Kyong Chun](https://scholar.google.com.mx/citations?user=v_x4nFoAAAAJ&hl=pt-BR), [Safiya Noble](https://safiyaunoble.com/appearances/), [Judith Sutz](https://scholar.google.com/citations?user=SwNxAj4AAAAJ&hl=en),  [Pedro Demo](https://ufrb.edu.br/educacaodocampocfp/images/DEMO_Pedro._Metodologia_cient%C3%ADfica_em_Si%C3%AAncias_Sociais.pdf) y no olvides que: siempre es recomendable volver a los clásicos: [El Capital](https://www.marxists.org/espanol/m-e/capital/karl-marx-el-capital-tomo-i-editorial-progreso.pdf)
+
+### Algunos textos y libros adicionales:  
+
+- [Cyber-Marx: Cycles and circuits of struggle in high technology capitalism - Nick Dyer-Witheford](https://libcom.org/article/cyber-marx-cycles-and-circuits-struggle-high-technology-capitalism-nick-dyer-witheford). 
+
+- [La Condición de la Posmodernidad - David Harvey](http://www.economia.unam.mx/academia/inae/pdf/inae2/u2l2.pdf)
+
+- [A dependência tecnologica segundo a dialéctica da dependência de Ruy Mauro Marini](https://img.fae.edu/galeria/getImage/1/23587255307096012.pdf)
+
+- [Desenvolvimento e dependência - Ruy Mauro Marini](https://portalantigo.ipea.gov.br/agencia/images/stories/PDFs/livros/livros/livro_desenvolvimento_dependencia.pdf)
+
+También puede ser útil visitar [Revista Chasqui de Ecuador](https://revistachasqui.org/index.php/chasqui)
