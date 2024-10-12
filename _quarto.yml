@@ -29,7 +29,7 @@ format:
       light: flatly 
       dark: darkly
     fontsize: 1.4em
-    inestretch: 1.8
+    linestretch: 1.9
   pdf:
     documentclass: scrreprt
 
