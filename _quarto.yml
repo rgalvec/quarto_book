@@ -28,8 +28,8 @@ format:
     theme: 
       light: flatly 
       dark: darkly
-    fontsize: 1.4em
-    linestretch: 1.9
+    fontsize: 1.2em
+
   pdf:
     documentclass: scrreprt
 
